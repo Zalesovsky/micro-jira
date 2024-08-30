@@ -1,0 +1,8 @@
+.gradle/
+build/
+
+### IntelliJ IDEA ###
+.idea/
+
+### VS Code ###
+.vscode/
