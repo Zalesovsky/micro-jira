@@ -3,7 +3,6 @@ package org.example.userservice.controller;
 import lombok.RequiredArgsConstructor;
 import org.example.userservice.entity.User;
 import org.example.userservice.entity.dto.UserDto;
-import org.example.userservice.entity.mapper.UserMapper;
 import org.example.userservice.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,11 +24,10 @@ import java.util.UUID;
 public class UserController {
 
     private final UserService userService;
-    private final UserMapper userMapper;
 
     @PostMapping
     public ResponseEntity<Void> add(@RequestBody UserDto userDto) {
-        userService.add(userMapper.toEntity(userDto));
+        userService.add(userDto);
         return ResponseEntity.ok().build();
     }
 
@@ -45,7 +43,7 @@ public class UserController {
 
     @PutMapping
     public ResponseEntity<Void> update(@RequestBody UserDto userDto) {
-        userService.update(userMapper.toEntity(userDto));
+        userService.update(userDto);
         return ResponseEntity.ok().build();
     }
 

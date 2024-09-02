@@ -16,8 +16,8 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: main
+          - id: user-service
             uri: lb://user-service
             predicates:
-              - Path=/user/test
-              - Method=GET
+              - Path=/api/v1/user/**
+              - Method=GET,POST,PUT,DELETE
