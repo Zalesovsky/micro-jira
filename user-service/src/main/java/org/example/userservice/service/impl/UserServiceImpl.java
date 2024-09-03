@@ -26,8 +26,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User get(UUID id) {
+    public User getById(UUID id) {
         return userRepository.findById(id).orElseThrow();
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow();
     }
 
     @Override
@@ -37,25 +42,19 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(UserDto userDto) {
-        userRepository.findById(userDto.getId()).ifPresentOrElse(
-                findedUser -> {
-                    userMapper.updateEntityFromDto(findedUser, userDto);
-                    userRepository.save(findedUser);
-                },
-                () -> {
-                    throw new NoSuchElementException();
-                }
-        );
+        userRepository.findById(userDto.getId()).ifPresentOrElse(findedUser -> {
+            userMapper.updateEntityFromDto(findedUser, userDto);
+            userRepository.save(findedUser);
+        }, () -> {
+            throw new NoSuchElementException();
+        });
     }
 
     @Override
     public void remove(UUID id) {
-        userRepository.findById(id).ifPresentOrElse(
-                userRepository::delete,
-                () -> {
-                    throw new NoSuchElementException();
-                }
-        );
+        userRepository.findById(id).ifPresentOrElse(userRepository::delete, () -> {
+            throw new NoSuchElementException();
+        });
     }
 
 }

@@ -2,4 +2,5 @@ rootProject.name = 'micro-jira'
 
 includeBuild 'eureka-server'
 includeBuild 'api-gateway'
+includeBuild 'authorization-server'
 includeBuild 'user-service'

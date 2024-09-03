@@ -1,0 +1,30 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: authorization-server
+  security:
+    user:
+      name: admin
+      password: admin
+    oauth2:
+      authorization-server:
+        client:
+          oidc-client:
+            registration:
+              client-id: "oidc-client"
+              client-secret: "{noop}secret"
+              client-authentication-methods:
+                - "client_secret_basic"
+              authorization-grant-types:
+                - "authorization_code"
+                - "refresh_token"
+              redirect-uris:
+                - "http://localhost:8765/api/v1/user"
+              post-logout-redirect-uris:
+                - "http://localhost:8765/"
+              scopes:
+                - "openid"
+                - "profile"
+            require-authorization-consent: true
