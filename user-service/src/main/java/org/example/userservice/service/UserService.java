@@ -10,7 +10,9 @@ public interface UserService {
 
     void add(UserDto userDto);
 
-    User get(UUID id);
+    User getById(UUID id);
+
+    User getByUsername(String login);
 
     List<User> getAll();
 
