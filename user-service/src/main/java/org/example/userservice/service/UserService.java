@@ -12,7 +12,7 @@ public interface UserService {
 
     User getById(UUID id);
 
-    User getByUsername(String login);
+    User getByUsername(String username);
 
     List<User> getAll();
 

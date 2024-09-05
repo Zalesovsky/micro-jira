@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService {
                     userRepository.save(findedUser);
                 },
                 () -> {
-                    throw new NoSuchElementException();
+                    throw new NoSuchElementException("No value present");
                 }
         );
     }
@@ -58,7 +58,7 @@ public class UserServiceImpl implements UserService {
         userRepository.findById(id).ifPresentOrElse(
                 userRepository::delete,
                 () -> {
-                    throw new NoSuchElementException();
+                    throw new NoSuchElementException("No value present");
                 }
         );
     }

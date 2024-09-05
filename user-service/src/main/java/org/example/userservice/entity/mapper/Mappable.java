@@ -10,6 +10,6 @@ public interface Mappable<E, D> {
     D toDto(E entity);
 
     @Mapping(target = "id", ignore = true)
-    void updateEntityFromDto(E entity, @MappingTarget D dto);
+    void updateEntityFromDto(@MappingTarget E entity, D dto);
 
 }
