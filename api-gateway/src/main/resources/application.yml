@@ -19,5 +19,12 @@ spring:
           - id: user-service
             uri: lb://user-service
             predicates:
-              - Path=/api/v1/user/**
-              - Method=GET,POST,PUT,DELETE
+              - Path=/user-service/api/v1/user/**, /user-service/api/v1/role/**
+            filters:
+              - RewritePath=/user-service/?(?<segment>.*), /$\{segment}
+          - id: task-service
+            uri: lb://task-service
+            predicates:
+              - Path=/task-service/api/v1/project/**, /task-service/api/v1/issue/**, /task-service/api/v1/user/**
+            filters:
+              - RewritePath=/task-service/?(?<segment>.*), /$\{segment}

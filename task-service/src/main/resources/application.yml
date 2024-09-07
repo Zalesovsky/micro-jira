@@ -1,12 +1,12 @@
 server:
-  port: 0
+  port: 8765
 
 spring:
   application:
-    name: user-service
+    name: task-service
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/user_db
+    url: jdbc:postgresql://localhost:5432/task_db
     username: postgres
     password: 111
     driver-class-name: org.postgresql.Driver
@@ -22,3 +22,4 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+

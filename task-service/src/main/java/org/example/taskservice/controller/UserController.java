@@ -1,10 +1,10 @@
-package org.example.userservice.controller;
+package org.example.taskservice.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.example.userservice.entity.User;
-import org.example.userservice.entity.dto.UserDto;
-import org.example.userservice.service.UserService;
+import org.example.taskservice.entity.User;
+import org.example.taskservice.entity.dto.UserDto;
+import org.example.taskservice.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,12 +38,7 @@ public class UserController {
     public ResponseEntity<User> getById(@PathVariable("id") UUID id) {
         return ResponseEntity.ok(userService.getById(id));
     }
-
-    @GetMapping("/username/{username}")
-    public ResponseEntity<User> getByUsername(@PathVariable String username) {
-        return ResponseEntity.ok(userService.getByUsername(username));
-    }
-
+    
     @GetMapping
     public ResponseEntity<List<User>> getAll() {
         return ResponseEntity.ok(userService.getAll());

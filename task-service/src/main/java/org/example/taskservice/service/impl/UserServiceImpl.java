@@ -1,11 +1,11 @@
-package org.example.userservice.service.impl;
+package org.example.taskservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.userservice.entity.User;
-import org.example.userservice.entity.dto.UserDto;
-import org.example.userservice.entity.mapper.UserMapper;
-import org.example.userservice.repository.UserRepository;
-import org.example.userservice.service.UserService;
+import org.example.taskservice.entity.User;
+import org.example.taskservice.entity.dto.UserDto;
+import org.example.taskservice.entity.mapper.UserMapper;
+import org.example.taskservice.repository.UserRepository;
+import org.example.taskservice.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,12 +27,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(UUID id) {
-        return userRepository.findById(id).orElseThrow();
-    }
-
-    @Override
-    public User getByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow();
+        return id != null ? userRepository.findById(id).orElseThrow() : null;
     }
 
     @Override
