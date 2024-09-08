@@ -38,7 +38,7 @@ public class IssueController {
     }
 
     @GetMapping("/title/{title}")
-    public ResponseEntity<Issue> getByUsername(@PathVariable String title) {
+    public ResponseEntity<Issue> getByTitle(@PathVariable String title) {
         return ResponseEntity.ok(issueService.getByTitle(title));
     }
 

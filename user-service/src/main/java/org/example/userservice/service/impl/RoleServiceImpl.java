@@ -7,6 +7,7 @@ import org.example.userservice.entity.mapper.RoleMapper;
 import org.example.userservice.repository.RoleRepository;
 import org.example.userservice.service.RoleService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -14,6 +15,7 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 
 @Service
+@Transactional
 public class RoleServiceImpl implements RoleService {
 
     private final RoleRepository roleRepository;

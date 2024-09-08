@@ -1,4 +1,4 @@
-package org.example.taskservice.entity.dto;
+package org.example.userservice.entity.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,18 @@ import java.util.UUID;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserEventDto {
 
     private UUID id;
-
     private String firstName;
-
     private String lastName;
+    private EventType eventType;
+
+
+    public enum EventType {
+        CREATE,
+        UPDATE,
+        DELETE
+    }
 
 }
