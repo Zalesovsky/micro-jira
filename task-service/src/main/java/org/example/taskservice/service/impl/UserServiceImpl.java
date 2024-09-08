@@ -2,11 +2,12 @@ package org.example.taskservice.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.taskservice.entity.User;
-import org.example.taskservice.entity.dto.UserDto;
-import org.example.taskservice.entity.mapper.UserMapper;
+import org.example.taskservice.entity.dto.UserEventDto;
+import org.example.taskservice.entity.mapper.UserEventMapper;
 import org.example.taskservice.repository.UserRepository;
 import org.example.taskservice.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,14 +16,15 @@ import java.util.UUID;
 @RequiredArgsConstructor
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final UserMapper userMapper;
+    private final UserEventMapper userEventMapper;
 
     @Override
-    public void add(UserDto userDto) {
-        userRepository.save(userMapper.toEntity(userDto));
+    public void add(UserEventDto userEventDto) {
+        userRepository.save(userEventMapper.toEntity(userEventDto));
     }
 
     @Override
@@ -36,10 +38,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void update(UserDto userDto) {
-        userRepository.findById(userDto.getId()).ifPresentOrElse(
+    public void update(UserEventDto userEventDto) {
+        userRepository.findById(userEventDto.getId()).ifPresentOrElse(
                 findedUser -> {
-                    userMapper.updateEntityFromDto(findedUser, userDto);
+                    userEventMapper.updateEntityFromDto(findedUser, userEventDto);
                     userRepository.save(findedUser);
                 },
                 () -> {

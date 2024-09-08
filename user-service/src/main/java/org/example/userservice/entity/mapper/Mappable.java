@@ -5,6 +5,7 @@ import org.mapstruct.MappingTarget;
 
 public interface Mappable<E, D> {
 
+    @Mapping(target = "id", ignore = true)
     E toEntity(D dto);
 
     D toDto(E entity);

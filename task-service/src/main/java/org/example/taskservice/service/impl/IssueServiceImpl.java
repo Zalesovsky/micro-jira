@@ -7,6 +7,7 @@ import org.example.taskservice.entity.mapper.IssueMapper;
 import org.example.taskservice.repository.IssueRepository;
 import org.example.taskservice.service.IssueService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,6 +16,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 
 @Service
+@Transactional
 public class IssueServiceImpl implements IssueService {
 
     private final IssueRepository issueRepository;
