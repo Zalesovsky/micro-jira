@@ -36,8 +36,8 @@ dependencies {
     implementation 'org.springframework.kafka:spring-kafka'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.17.0'
     implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+    implementation 'org.postgresql:postgresql:42.7.4'
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
