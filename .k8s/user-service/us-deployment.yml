@@ -1,19 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-service
+  name: user-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user-service
+      app: user
   template:
     metadata:
       labels:
-        app: user-service
+        app: user
     spec:
       containers:
-        - name: user-service
-          image: zaliasouski/micro-jira-user-service
+        - name: user
+          image: micro-jira-user-service:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 8080

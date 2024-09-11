@@ -34,8 +34,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void add(UserDto userDto) {
+
         User user = userMapper.toEntity(userDto);
         userRepository.saveAndFlush(user);
+
         UserEventDto userEventDto = userEventMapper.toDto(user);
         userEventDto.setEventType(UserEventDto.EventType.CREATE);
         kafkaTemplate.send(userTopicName, userEventDto);

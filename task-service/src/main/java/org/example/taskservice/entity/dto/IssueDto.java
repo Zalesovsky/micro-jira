@@ -21,6 +21,8 @@ public class IssueDto {
     @NonNull
     private UUID projectId;
 
+    private ProjectDto project;
+
     @NonNull
     private UUID reporterUserId;
 
